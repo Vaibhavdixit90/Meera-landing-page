@@ -3,6 +3,11 @@
 # Learn more about .gitignore:
 #     https://www.atlassian.com/git/tutorials/saving-changes/gitignore
 
+
+# Next.js build and cache directories
+.next/
+
+
 # Node artifact files
 node_modules/
 dist/
