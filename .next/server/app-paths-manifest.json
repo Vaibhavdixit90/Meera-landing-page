@@ -1,0 +1,13 @@
+{
+  "/_not-found/page": "app/_not-found/page.js",
+  "/api/sendOtp/route": "app/api/sendOtp/route.js",
+  "/api/leadDetails/[leadId]/route": "app/api/leadDetails/[leadId]/route.js",
+  "/api/verifyOtp/route": "app/api/verifyOtp/route.js",
+  "/api/websiteChat/route": "app/api/websiteChat/route.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/pricing/page": "app/pricing/page.js",
+  "/faqs/page": "app/faqs/page.js",
+  "/explore-meera/page": "app/explore-meera/page.js",
+  "/contact/page": "app/contact/page.js",
+  "/page": "app/page.js"
+}

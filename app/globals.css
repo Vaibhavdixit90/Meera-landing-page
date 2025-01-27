@@ -1,0 +1,317 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: "Inter", sans-serif;
+}
+
+.markdown {
+  line-height: 1.6;
+  color: #333;
+  padding: 20px;
+}
+
+.markdown a {
+  color: blue;
+  font-weight: 600;
+}
+
+.markdown p {
+  font-weight: 400;
+  font-size: 1rem;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  color: black;
+}
+
+/* @media (max-width: 768px) {
+  .markdown p {
+    font-weight: 600;
+  }
+} */
+
+/* Ordered Lists */
+.markdown ol {
+  list-style: decimal inside;
+  margin-left: 20px;
+}
+
+.markdown ol li {
+  margin-top: 10px;
+  font-weight: 400;
+  font-size: 1rem;
+  color: black;
+}
+
+/* @media (max-width: 768px) {
+  .markdown ol li {
+    font-weight: 600;
+  }
+} */
+
+.markdown ol li strong {
+  color: black;
+  font-weight: 600;
+}
+
+/* @media (max-width: 768px) {
+  .markdown ol li strong {
+    font-weight: 700;
+  }
+} */
+
+.markdown .user p {
+  font-weight: 600;
+  color: black;
+}
+
+.markdown .user p::first-letter {
+  text-transform: capitalize;
+}
+
+.markdown ::marker {
+  color: #fff;
+  font-weight: 700;
+}
+
+/* Unordered Lists */
+.markdown ul {
+  list-style: disc inside;
+  margin-left: 20px;
+}
+
+.markdown ul li {
+  margin-top: 5px;
+  font-weight: 400;
+  font-size: 1rem;
+  color: black;
+}
+/* @media (max-width: 768px) {
+  .markdown ul li {
+    font-weight: 600;
+  }
+} */
+
+.markdown ul li strong {
+  color: black;
+  font-weight: 600;
+}
+
+/* @media (max-width: 768px) {
+  .markdown ul li {
+    font-weight: 600;
+  }
+} */
+
+/* Ensure the table is scrollable horizontally on mobile devices */
+.markdown table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  font-size: 0.9rem;
+  overflow-x: auto;
+  display: block; /* Makes the table block-level to enable scrolling */
+}
+
+.markdown th,
+.markdown td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: left;
+  font-weight: 400;
+  color: black;
+  padding-left: 20px;
+}
+
+.markdown th {
+  color: black;
+}
+
+.markdown th strong {
+  font-weight: 600;
+}
+
+/* Price Styling */
+.markdown td:contains("₹") {
+  font-weight: bold;
+  color: #28a745;
+}
+
+/* Recommendations Section */
+.markdown .recommendation {
+  margin-top: 20px;
+  padding: 15px;
+  border-left: 4px solid #007bff;
+}
+
+.markdown .recommendation strong {
+  font-size: 1.2rem;
+}
+
+.markdown .recommendation p {
+  margin-top: 10px;
+}
+
+/* Question Section */
+.markdown .questions {
+  margin-top: 20px;
+
+  padding: 15px;
+  border-left: 4px solid #ffecb5;
+}
+
+.markdown .questions p {
+  margin-top: 10px;
+}
+
+/* Product Specifications */
+.markdown .specifications {
+  margin-top: 20px;
+}
+
+.markdown .specifications ul {
+  padding-left: 0;
+}
+
+.markdown .specifications ul li {
+  margin-top: 5px;
+}
+
+/* Strong Styling */
+.markdown p strong {
+  font-size: 1rem;
+  color: black;
+  margin-top: 20px;
+}
+
+/* @media (max-width: 768px) {
+  .markdown p strong {
+    font-weight: 700;
+  }
+} */
+
+.markdown ul {
+  list-style-type: none;
+  margin-left: 0;
+}
+
+.markdown ol {
+  list-style-type: none;
+  margin-left: 0;
+}
+
+.markdown li {
+  padding: 5px 0;
+}
+
+/* Hide scrollbar for Chrome, Safari, and Edge */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for Firefox */
+.hide-scrollbar {
+  scrollbar-width: none;
+}
+
+.swiper-button-prev .swiper-button-next {
+  color: black;
+}
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+    --radius: 0.5rem;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --color-1: 0 100% 63%;
+    --color-2: 270 100% 63%;
+    --color-3: 210 100% 63%;
+    --color-4: 195 100% 63%;
+    --color-5: 90 100% 63%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+    --color-1: 0 100% 63%;
+    --color-2: 270 100% 63%;
+    --color-3: 210 100% 63%;
+    --color-4: 195 100% 63%;
+    --color-5: 90 100% 63%;
+  }
+}
+
+/* @layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+} */
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.5s ease-in forwards;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
