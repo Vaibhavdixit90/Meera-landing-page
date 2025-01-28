@@ -41,7 +41,7 @@ const features = [
 export default function BentoGrid() {
   return (
     <div className="max-w-7xl mx-auto flex flex-col py-10 px-4">
-      <h1 className=" w-full md:max-w-[80%] text-center md:text-left text-3xl font-semibold leading-snug tracking-tight text-black  sm:text-4xl md:text-5xl lg:text-[4rem] lg:leading-[5rem] ">
+      <h1 className=" w-full md:max-w-[80%] text-center md:text-left text-3xl font-semibold leading-snug tracking-tight sm:text-4xl md:text-5xl lg:text-[4rem] lg:leading-[5rem] ">
         The cutting-edge AI, Proprietary tech, Redefining the future
       </h1>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-10">
