@@ -49,7 +49,7 @@ export default function FaqPage() {
 
   return (
     <section className="mx-auto max-w-7xl px-4 py-20  md:px-8">
-      <h2 className=" w-full md:max-w-[80%] text-3xl font-semibold leading-snug tracking-tight text-black  sm:text-4xl md:text-5xl lg:text-[4rem] lg:leading-[5rem]  ">
+      <h2 className=" w-full md:max-w-[80%] text-3xl font-semibold leading-snug tracking-tight sm:text-4xl md:text-5xl lg:text-[4rem] lg:leading-[5rem]  ">
         Frequently Asked Questions
       </h2>
       <div className="max-w-7xl mx-auto mt-5 sm:mt-12">

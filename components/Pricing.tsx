@@ -58,7 +58,7 @@ export default function Pricing() {
 
   return (
     <div className="mx-auto max-w-7xl py-20 px-4 md:px-8">
-      <h2 className=" w-full md:max-w-[80%] text-center md:text-left text-3xl font-semibold leading-snug tracking-tight text-black  sm:text-4xl md:text-5xl lg:text-[4rem] lg:leading-[5rem] ">
+      <h2 className=" w-full md:max-w-[80%] text-center md:text-left text-3xl font-semibold leading-snug tracking-tight  sm:text-4xl md:text-5xl lg:text-[4rem] lg:leading-[5rem] ">
         {pricingData?.Section_Title}
       </h2>
 

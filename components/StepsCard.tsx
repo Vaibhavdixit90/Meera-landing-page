@@ -4,7 +4,7 @@ import Image from "next/image";
 const StepsCard: React.FC = () => {
   return (
     <div className="max-w-7xl mx-auto flex flex-col px-4 py-20 md:px-8">
-      <h1 className=" w-full md:max-w-[80%] text-center md:text-left  text-3xl font-semibold leading-snug tracking-tight text-black dark:text-neutral-300 sm:text-4xl md:text-5xl lg:text-[4rem] lg:leading-[5rem]">
+      <h1 className=" w-full md:max-w-[80%] text-center md:text-left  text-3xl font-semibold leading-snug tracking-tight sm:text-4xl md:text-5xl lg:text-[4rem] lg:leading-[5rem]">
         Customize your AI's Knowledge
       </h1>
       <div className="flex flex-col md:flex-row gap-8 w-full mt-10">
