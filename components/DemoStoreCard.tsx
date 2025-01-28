@@ -20,7 +20,7 @@ const DemoStoreCard = (props: {}) => {
   const handleOpenPopup = (
     title: string,
     badge?: string,
-    Icon?: React.ElementType,
+    Icon?: React.ElementType
   ) => {
     setPopupData({ title, badge, Icon });
   };
@@ -167,11 +167,11 @@ const DemoStoreCard = (props: {}) => {
         viewOptions={{ margin: "0px 0px -350px 0px" }}
       >
         <div className="mx-auto max-w-7xl px-4 py-20 md:px-8">
-          <h1 className="max-w-[80%] text-left text-3xl font-semibold leading-snug tracking-tight text-black dark:text-neutral-300 sm:text-4xl md:text-5xl lg:text-[4rem] lg:leading-[5rem]">
+          <h1 className=" w-full md:max-w-[80%] text-center md:text-left text-3xl font-semibold leading-snug tracking-tight text-black dark:text-neutral-300 sm:text-4xl md:text-5xl lg:text-[4rem] lg:leading-[5rem]">
             Intelligence isn&#39;t something you can measure, it&#39;s an
             experience.
           </h1>
-          <p className="py-7 text-left text-xl text-black dark:text-neutral-300">
+          <p className="py-7 text-center md:text-left  text-xl text-black dark:text-neutral-300">
             Click on your store and Get started
           </p>
 
@@ -254,7 +254,7 @@ interface TiltCardProps {
   onOpenPopup: (
     title: string,
     badge?: string,
-    Icon?: React.ElementType,
+    Icon?: React.ElementType
   ) => void; // Prop to handle popup
 }
 
@@ -382,7 +382,7 @@ const Popup: React.FC<PopupProps> = ({ data, onClose }) => {
               "Content-Type": "application/json",
             },
             body: JSON.stringify(requestBody),
-          },
+          }
         );
 
         if (response.ok) {

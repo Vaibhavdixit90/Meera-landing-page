@@ -9,6 +9,7 @@ import { CONSTANTS } from "@/constants/links";
 import { HeroVideoDialogDemo } from "./HeroVideoDialog";
 import { LinkPreview } from "./ui/link-preview";
 import { RainbowButton } from "./ui/rainbow-button";
+import SparklesText from "./magicui/sparkles-text";
 
 export function Hero() {
   const [tittle, setTittle] = useState(" ");
@@ -55,7 +56,7 @@ export function Hero() {
     <>
       <div
         ref={parentRef}
-        className="relative flex flex-col items-center justify-center overflow-hidden bg-white px-4 pt-20 dark:bg-black md:min-h-screen md:px-8"
+        className="relative flex flex-col items-center justify-center overflow-hidden bg-white px-4 pt-10 dark:bg-black md:min-h-screen md:px-8 "
       >
         <div className="hidden sm:block">
           <BackgroundGrids />
@@ -109,14 +110,33 @@ export function Hero() {
           Introducing Meera
         </h1>
 
-        <div className="relative z-20 mx-auto mb-4 mt-4 max-w-5xl text-balance text-center text-3xl font-semibold tracking-tight text-black dark:text-neutral-300 sm:text-4xl md:text-7xl">
+        {/* <div className="relative z-20 mx-auto mb-4 mt-4 max-w-5xl text-balance text-center text-3xl font-semibold tracking-tight text-black dark:text-neutral-300 sm:text-4xl md:text-7xl">
           <Balancer>{tittle}</Balancer>
-        </div>
-        <p className="z-20 mx-auto mb-4 max-w-5xl text-center text-xl font-medium text-slate-600 dark:text-gray-200 md:mb-8 md:text-2xl">
+        </div> */}
+        {/* <p className="z-20 mx-auto mb-4 max-w-5xl text-center text-xl font-medium text-slate-600 dark:text-gray-200 md:mb-8 md:text-2xl">
           {description}
-        </p>
+        </p> */}
+
+        <div className="py-10 xl:pb-20">
+          <h1 className="text-3xl text-center font-bold sm:text-6xl md:text-7xl xl:px-0 2xl:text-8xl mb-0 md:mb-5 ">
+            Experince
+          </h1>
+          <SparklesText
+            text="The Magic of Meera"
+            className="px-4 text-center text-3xl font-normal tracking-tight text-black dark:text-neutral-300 sm:text-6xl md:text-7xl xl:px-0 2xl:text-8xl"
+          />
+        </div>
 
         <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, delay: 0.9, ease: "easeOut" }}
+          ref={containerRef}
+        >
+          <HeroVideoDialogDemo />
+        </motion.div>
+
+        {/* <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.2, delay: 0.7 }}
@@ -154,16 +174,6 @@ export function Hero() {
             </LinkPreview>
           </div>
         </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, delay: 0.9, ease: "easeOut" }}
-          ref={containerRef}
-        >
-          <HeroVideoDialogDemo />
-        </motion.div>
-
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -188,7 +198,7 @@ export function Hero() {
               Interact with Meera
             </RainbowButton>
           </LinkPreview>
-        </motion.div>
+        </motion.div> */}
       </div>
     </>
   );

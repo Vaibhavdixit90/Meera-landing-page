@@ -73,7 +73,7 @@ const HeroVideoDialog = forwardRef<HTMLVideoElement, HeroVideoProps>(
       thumbnailAlt = "Video thumbnail",
       className,
     },
-    ref,
+    ref
   ) {
     const containerRef = useRef<HTMLDivElement>(null);
     const [isVideoOpen, setIsVideoOpen] = useState(false);
@@ -90,15 +90,15 @@ const HeroVideoDialog = forwardRef<HTMLVideoElement, HeroVideoProps>(
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: 0.9, ease: "easeOut" }}
             ref={containerRef} // Only ref for the div container
-            className="rounded-[32px] backdrop-blur-lg"
+            className="rounded-[20px] backdrop-blur-lg"
           >
-            <div className="rounded-[24px] p-2">
+            <div className="rounded-[20px] p-2">
               <video
                 ref={ref} // Use ref for the video
                 src={videoPreviewSrc}
                 width={1920}
                 height={1080}
-                className="w-full rounded-md border shadow-lg transition-all duration-200 ease-out group-hover:brightness-[0.8]"
+                className="w-full rounded-[20px] border shadow-lg transition-all duration-200 ease-out group-hover:brightness-[0.8]"
                 loop
                 muted
                 autoPlay
@@ -155,7 +155,7 @@ const HeroVideoDialog = forwardRef<HTMLVideoElement, HeroVideoProps>(
         </AnimatePresence>
       </div>
     );
-  },
+  }
 );
 
 export default HeroVideoDialog;

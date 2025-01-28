@@ -16,14 +16,14 @@ const AccordionItem = forwardRef<HTMLDivElement, AccordionItemProps>(
     <Accordion.Item
       className={cn(
         "mt-px overflow-hidden focus-within:relative focus-within:z-10",
-        className,
+        className
       )}
       {...props}
       ref={forwardedRef}
     >
       {children}
     </Accordion.Item>
-  ),
+  )
 );
 AccordionItem.displayName = "AccordionItem";
 
@@ -38,7 +38,7 @@ const AccordionTrigger = forwardRef<HTMLButtonElement, AccordionTriggerProps>(
       <Accordion.Trigger
         className={cn(
           "group flex h-[45px] flex-1 cursor-pointer items-center justify-between px-5 text-[15px] leading-none outline-none",
-          className,
+          className
         )}
         {...props}
         ref={forwardedRef}
@@ -46,7 +46,7 @@ const AccordionTrigger = forwardRef<HTMLButtonElement, AccordionTriggerProps>(
         {children}
       </Accordion.Trigger>
     </Accordion.Header>
-  ),
+  )
 );
 AccordionTrigger.displayName = "AccordionTrigger";
 
@@ -60,14 +60,14 @@ const AccordionContent = forwardRef<HTMLDivElement, AccordionContentProps>(
     <Accordion.Content
       className={cn(
         "data-[state=closed]:animate-slide-up data-[state=open]:animate-slide-down overflow-hidden text-[15px] font-medium",
-        className,
+        className
       )}
       {...props}
       ref={forwardedRef}
     >
       <div className="px-5 py-2">{children}</div>
     </Accordion.Content>
-  ),
+  )
 );
 AccordionContent.displayName = "AccordionContent";
 
@@ -99,7 +99,7 @@ const Feature = ({ ltr = false, linePosition = "left" }: FeatureProps) => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          "https://cms.flowautomate.io/api/homepage?populate[Feature][populate][Main_Video]=*&populate[Feature][populate][Points]=*",
+          "https://cms.flowautomate.io/api/homepage?populate[Feature][populate][Main_Video]=*&populate[Feature][populate][Points]=*"
         );
         const data = await response.json();
         const fetchedData = data?.data?.attributes?.Feature;
@@ -133,7 +133,7 @@ const Feature = ({ ltr = false, linePosition = "left" }: FeatureProps) => {
         const index = cardData.findIndex(
           (point) =>
             currentTime >= point.fromTimestamp &&
-            currentTime < point.toTimestamp,
+            currentTime < point.toTimestamp
         );
         if (index !== -1 && index !== currentIndex) {
           setCurrentIndex(index);
@@ -157,7 +157,7 @@ const Feature = ({ ltr = false, linePosition = "left" }: FeatureProps) => {
       ([entry]) => {
         setIsFeatureInView(entry.isIntersecting);
       },
-      { threshold: 1.0 },
+      { threshold: 1.0 }
     );
 
     if (sectionRef.current) {
@@ -196,12 +196,15 @@ const Feature = ({ ltr = false, linePosition = "left" }: FeatureProps) => {
   return (
     <section
       id="features"
-      className="mx-auto max-w-7xl px-4 py-10 xl:px-8 xl:py-20"
+      className="mx-auto max-w-7xl px-4 py-10 xl:px-8 xl:pb-14 xl:pt-32"
       ref={sectionRef}
     >
       <div className="pb-10 xl:pb-28">
+        <h1 className="text-3xl text-center font-bold sm:text-6xl md:text-7xl xl:px-0 2xl:text-8xl mb-5 ">
+          Experince
+        </h1>
         <SparklesText
-          text={sectionTitle}
+          text="The Magic of Meera"
           className="px-4 text-center text-3xl font-normal tracking-tight text-black dark:text-neutral-300 sm:text-6xl md:text-7xl xl:px-0 2xl:text-8xl"
         />
       </div>

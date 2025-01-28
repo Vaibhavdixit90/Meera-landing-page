@@ -5,6 +5,8 @@ import { useCalEmbed } from "@/app/hooks/useCalEmbed";
 import { CONSTANTS } from "@/constants/links";
 import axios from "axios";
 import DemoStoreLeadForm from "./DemoStoreLeadForm"; // Import the form component
+import { LinkPreview } from "./ui/link-preview";
+import { RainbowButton } from "./ui/rainbow-button";
 
 const Cta = () => {
   const calOptions = useCalEmbed({
@@ -27,7 +29,7 @@ const Cta = () => {
     const fetchCtaData = async () => {
       try {
         const response = await axios.get(
-          "https://cms.flowautomate.io/api/cta?populate[Details][populate]=Store",
+          "https://cms.flowautomate.io/api/cta?populate[Details][populate]=Store"
         );
         setCtaData(response.data.data.attributes);
       } catch (error) {
@@ -37,29 +39,29 @@ const Cta = () => {
     fetchCtaData();
   }, []);
 
-    // Redirection logic with validation (commented out for direct redirection)
+  // Redirection logic with validation (commented out for direct redirection)
   const handleStoreClick = async (storeUrl: string) => {
     // Save the selected store URL in localStorage
     localStorage.setItem("pendingRedirectUrl", storeUrl);
-  
+
     // Commented out the ID and token check
     // const updatedId = localStorage.getItem("id");
     // const updatedToken = localStorage.getItem("token");
-  
+
     // if (updatedId && updatedToken) {
     //   try {
     //     const response = await axios.get(`api/leadDetails/${updatedId}`);
-  
+
     //     if (response.data.success) {
     //       const apiToken = response.data.data.token;
     //       const apiId = response.data.data.id.toString();
-  
+
     //       // Update localStorage if token or id differs
     //       if (apiToken !== updatedToken || apiId !== updatedId) {
     //         localStorage.setItem("id", apiId);
     //         localStorage.setItem("token", apiToken);
     //       }
-  
+
     //       // Redirect user
     //       window.open(
     //         `${storeUrl}?leadId=${apiId}&token=${apiToken}`,
@@ -71,11 +73,10 @@ const Cta = () => {
     //     console.error("Error validating ID and Token:", error);
     //   }
     // }
-  
+
     // Directly redirect to the Redirection URL
     window.open(storeUrl, "_blank");
   };
-  
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
@@ -97,7 +98,7 @@ const Cta = () => {
   }, [isPopupOpen]);
 
   return (
-    <div className="mx-auto max-w-7xl px-4 md:px-8">
+    <div className="mx-auto max-w-7xl px-5 md:px-0 py-5 xl:py-10">
       <div className="rounded-[20px] bg-gray-100 py-10 dark:bg-[#1d1d1d]">
         <div className="text-center">
           <h2
@@ -110,75 +111,37 @@ const Cta = () => {
             {ctaData?.Section_Description || ""}
           </p>
         </div>
-        <div className="mt-10 flex-shrink-0 px-4 sm:flex sm:items-center sm:justify-center sm:space-x-5 md:px-8">
-          <Button
-            data-cal-namespace={calOptions.namespace}
-            data-cal-link={CONSTANTS.CALCOM_LINK}
-            data-cal-config={`{"layout":"${calOptions.layout}"}`}
-            as="button"
-            variant="primary"
-            className="inline-flex w-full items-center justify-center rounded-xl border-2 border-gray-400 px-8 py-3 text-base font-bold transition-all duration-200 sm:w-auto"
-          >
-            {ctaData?.TalkButton || " "}
-          </Button>
+        <div className="mt-10 flex-shrink-0 px-4 flex flex-col items-center space-y-5 sm:flex-row sm:space-y-0 sm:items-center sm:justify-center sm:space-x-5 md:px-8">
+  <Button
+    data-cal-namespace={calOptions.namespace}
+    data-cal-link={CONSTANTS.CALCOM_LINK}
+    data-cal-config={`{"layout":"${calOptions.layout}"}`}
+    as="button"
+    variant="primary"
+    className="flex items-center px-5 md:px-14 py-3 text-center text-base dark:bg-white dark:text-black"
+  >
+    <svg
+      fill="currentColor"
+      viewBox="0 0 16 16"
+      height="1.5em"
+      width="1.5em"
+      className="mr-3"
+    >
+      <path d="M14.5 3a.5.5 0 01.5.5v9a.5.5 0 01-.5.5h-13a.5.5 0 01-.5-.5v-9a.5.5 0 01.5-.5h13zm-13-1A1.5 1.5 0 000 3.5v9A1.5 1.5 0 001.5 14h13a1.5 1.5 0 001.5-1.5v-9A1.5 1.5 0 0014.5 2h-13z" />
+      <path d="M5 8a.5.5 0 01.5-.5h7a.5.5 0 010 1h-7A.5.5 0 015 8zm0-2.5a.5.5 0 01.5-.5h7a.5.5 0 010 1h-7a.5.5 0 01-.5-.5zm0 5a.5.5 0 01.5-.5h7a.5.5 0 010 1h-7a.5.5 0 01-.5-.5zm-1-5a.5.5 0 11-1 0 .5.5 0 011 0zM4 8a.5.5 0 11-1 0 .5.5 0 011 0zm0 2.5a.5.5 0 11-1 0 .5.5 0 011 0z" />
+    </svg>
+    Book a Consultation
+  </Button>
+  <div>
+    <LinkPreview>
+      <RainbowButton href="#" className="px-14 py-3 font-bold">
+        Get Started - Step 01
+      </RainbowButton>
+    </LinkPreview>
+  </div>
+</div>
 
-          <div className="group relative mt-5 inline-flex w-full sm:mt-0 sm:w-auto">
-            <div
-              className="absolute -inset-px rotate-180 rounded-xl opacity-70 blur-lg filter transition-all duration-1000 group-hover:-inset-1 group-hover:opacity-100 group-hover:duration-200"
-              style={{
-                background:
-                  "linear-gradient(90deg, #44ff9a -0.55%, #44b0ff 22.86%, #8b44ff 48.36%, #ff6644 73.33%, #ebff70 99.34%)",
-              }}
-            ></div>
-
-            <Link
-              href="#"
-              title=""
-              onClick={(e) => {
-                e.preventDefault();
-                setIsPopupOpen(true);
-              }}
-              className="font-pj relative inline-flex w-full items-center justify-center rounded-xl border-2 border-transparent bg-gray-900 px-8 py-3 text-base font-bold text-white transition-all duration-200 hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2 sm:w-auto"
-              role="button"
-            >
-              {ctaData?.DemoButton || " "}
-            </Link>
-          </div>
-        </div>
       </div>
-
-      {isPopupOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-700 bg-opacity-50 px-4 md:px-8">
-          <div
-            ref={popupRef}
-            className="w-[700px] max-w-full rounded-lg bg-white p-10 shadow-2xl dark:bg-[#141414]"
-          >
-            {selectedStore ? (
-              <DemoStoreLeadForm />
-            ) : (
-              <>
-                <h3 className="mb-6 text-center text-2xl font-semibold">
-                  {ctaData?.Details?.Tittle || "Select Store Type"}
-                </h3>
-                <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-                  {ctaData?.Details?.Store?.map((store: any) => (
-                    <div
-                      key={store.id}
-                      onClick={() => handleStoreClick(store.Redirection_url)}
-                      className="cursor-pointer rounded-lg border-2 border-gray-200 p-6 text-center transition hover:border-black hover:shadow-lg dark:border-gray-600 dark:hover:border-white"
-                    >
-                      <h4 className="text-xl font-bold">{store.Name}</h4>
-                      <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
-                        {store.Description}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </>
-            )}
-          </div>
-        </div>
-      )}
     </div>
   );
 };

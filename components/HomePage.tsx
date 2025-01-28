@@ -11,6 +11,10 @@ import { useEffect, useState } from "react";
 import { MeeraFeature } from "./MeeraFeature";
 import Cta from "./Cta";
 import FaqPage from "./FaqPage";
+import StepsCard from "./StepsCard";
+import BentoGrid from "./BentoGrid";
+import NewHero from "./NewHero";
+import Pricing from "./Pricing";
 
 // Define the interface for the CTA data
 interface CTAData {
@@ -51,15 +55,72 @@ export default function HomePage() {
 
   return (
     <main>
-      <Hero />
-      <TextRevealDemo />
-      <MeeraFeature />
+      {/* <NewHero /> */}
+  <Hero />
+      {/* <TextRevealDemo /> */}
+      {/* <MeeraFeature /> */}
       <Cta />
+    
+      <InView
+        variants={{
+          hidden: {
+            opacity: 0,
+            scale: 0.8,
+            filter: "blur(10px)", // Adjust blur amount as needed
+          },
+          visible: {
+            opacity: 1,
+            scale: 1,
+            filter: "blur(0px)",
+          },
+        }}
+        transition={{ duration: 0.5, ease: "easeInOut" }}
+        viewOptions={{ margin: "0px 0px -350px 0px" }}
+      >
+        <StepsCard />
+      </InView>
       <DemoStoreCard />
-      <MeeraFeaturesPoints />
 
+      {/* <MeeraFeaturesPoints /> */}
+
+      <InView
+        variants={{
+          hidden: {
+            opacity: 0,
+            scale: 0.8,
+            filter: "blur(10px)", // Adjust blur amount as needed
+          },
+          visible: {
+            opacity: 1,
+            scale: 1,
+            filter: "blur(0px)",
+          },
+        }}
+        transition={{ duration: 0.5, ease: "easeInOut" }}
+        viewOptions={{ margin: "0px 0px -350px 0px" }}
+      >
+        <BentoGrid />
+      </InView>
       {/* <FeaturedCategories /> */}
 
+      <InView
+        variants={{
+          hidden: {
+            opacity: 0,
+            scale: 0.8,
+            filter: "blur(10px)", // Adjust blur amount as needed
+          },
+          visible: {
+            opacity: 1,
+            scale: 1,
+            filter: "blur(0px)",
+          },
+        }}
+        transition={{ duration: 0.5, ease: "easeInOut" }}
+        viewOptions={{ margin: "0px 0px -350px 0px" }}
+      >
+        <Pricing />
+      </InView>
       <InView
         variants={{
           hidden: {

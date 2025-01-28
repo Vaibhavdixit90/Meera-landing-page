@@ -44,7 +44,7 @@ export const TestimonialCard = ({
       "mb-4 flex w-full cursor-pointer break-inside-avoid flex-col items-center justify-between gap-6 rounded-xl p-4",
       "border border-neutral-200 bg-white",
       "dark:bg-black dark:[border:1px_solid_rgba(255,255,255,.1)] dark:[box-shadow:0_-20px_80px_-20px_#ffffff1f_inset]",
-      className,
+      className
     )}
     {...props}
   >
@@ -88,7 +88,7 @@ export function Testimonials() {
   useEffect(() => {
     const fetchTestimonials = async () => {
       const response = await fetch(
-        "https://cms.flowautomate.io/api/homepage?populate[Testimonials][populate]=*",
+        "https://cms.flowautomate.io/api/homepage?populate[Testimonials][populate]=*"
       );
       const data = await response.json();
 
