@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   motion,
   useMotionTemplate,
@@ -11,6 +11,8 @@ import { ConfettiButton } from "./ui/confetti";
 import { InView } from "./in-view";
 
 const DemoStoreCard = (props: {}) => {
+  const [heading, setHeading] = useState("");
+  const [subheading, setSubheading] = useState("");
   const [popupData, setPopupData] = useState<{
     title: string;
     badge?: string;
@@ -29,6 +31,22 @@ const DemoStoreCard = (props: {}) => {
     setPopupData(null);
   };
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          "https://cms.flowautomate.io/api/meera-landing-page?populate=*"
+        );
+        const data = await response.json();
+        setHeading(data?.data?.attributes?.Section_2_Heading || " ");
+        setSubheading(data?.data?.attributes?.Sections_2_Subheading || " ");
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
   const ShopifySVG = () => (
     <svg
       viewBox="0 0 448 512"
@@ -155,7 +173,7 @@ const DemoStoreCard = (props: {}) => {
           hidden: {
             opacity: 0,
             scale: 0.8,
-            filter: "blur(10px)", // Adjust blur amount as needed
+            filter: "blur(10px)",
           },
           visible: {
             opacity: 1,
@@ -168,11 +186,10 @@ const DemoStoreCard = (props: {}) => {
       >
         <div className="mx-auto max-w-7xl px-4 py-20 md:px-8">
           <h1 className=" w-full md:max-w-[80%] text-center md:text-left text-3xl font-semibold leading-snug tracking-tight text-black dark:text-neutral-300 sm:text-4xl md:text-5xl lg:text-[4rem] lg:leading-[5rem]">
-            Intelligence isn&#39;t something you can measure, it&#39;s an
-            experience.
+            {heading}
           </h1>
           <p className="py-7 text-center md:text-left  text-xl text-black dark:text-neutral-300">
-            Click on your store and Get started
+            {subheading}
           </p>
 
           <div className="grid cursor-pointer grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
@@ -360,7 +377,7 @@ const Popup: React.FC<PopupProps> = ({ data, onClose }) => {
   };
 
   const validateEmail = (email: string) => {
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Simple regex for email validation
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailPattern.test(email);
   };
 

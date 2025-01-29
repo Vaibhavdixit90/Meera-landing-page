@@ -8,7 +8,7 @@ export const Footer = () => {
     const fetchFooterText = async () => {
       try {
         const response = await fetch(
-          "https://cms.flowautomate.io/api/meera-affiliate-landing-page?populate=*"
+          "https://cms.flowautomate.io/api/meera-landing-page?populate=*"
         );
         const data = await response.json();
         const text = data?.data?.attributes?.Footer_Copyright_Text;
@@ -24,9 +24,11 @@ export const Footer = () => {
   }, []);
 
   return (
-    <div className="relative bg-[#f1f1f1]">
-      <div className=" py-10 relative flex justify-center items-center">
-        <p className="text-sm sm:text-xl text-black">{footerText}</p>
+    <div className="relative bg-[#f1f1f1] dark:bg-[#1d1d1d]">
+      <div className="py-5 relative flex justify-center items-center">
+        <p className="text-sm sm:text-xl text-black dark:text-white">
+          {footerText}
+        </p>
       </div>
     </div>
   );

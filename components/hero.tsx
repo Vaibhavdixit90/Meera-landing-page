@@ -1,206 +1,65 @@
 "use client";
-import React, { useRef, useEffect, useState, ReactNode } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { cn } from "@/lib/utils";
-import Balancer from "react-wrap-balancer";
-import { Button } from "./button";
-import { useCalEmbed } from "@/app/hooks/useCalEmbed";
-import { CONSTANTS } from "@/constants/links";
 import { HeroVideoDialogDemo } from "./HeroVideoDialog";
-import { LinkPreview } from "./ui/link-preview";
-import { RainbowButton } from "./ui/rainbow-button";
 import SparklesText from "./magicui/sparkles-text";
 
 export function Hero() {
-  const [tittle, setTittle] = useState(" ");
-  const [description, setDescription] = useState(" ");
-  const containerRef = useRef<HTMLDivElement>(null);
-  const parentRef = useRef<HTMLDivElement>(null);
-  const calOptions = useCalEmbed({
-    namespace: CONSTANTS.CALCOM_NAMESPACE,
-    styles: {
-      branding: {
-        brandColor: CONSTANTS.CALCOM_BRAND_COLOR,
-      },
-    },
-    hideEventTypeDetails: CONSTANTS.CALCOM_HIDE_EVENT_TYPE_DETAILS,
-    layout: CONSTANTS.CALCOM_LAYOUT,
+  const containerRef = useRef(null);
+  const parentRef = useRef(null);
+  const [heroData, setHeroData] = useState({
+    Hero_Top_Heading: "",
+    Hero_Secound_Heading: "",
   });
 
   useEffect(() => {
-    const fetchData = async () => {
+    async function fetchHeroData() {
       try {
         const response = await fetch(
-          "https://cms.flowautomate.io/api/homepage?populate[Hero_Section]=*"
+          "https://cms.flowautomate.io/api/meera-landing-page"
         );
         const data = await response.json();
-
-        const tittle = data?.data?.attributes?.Hero_Section?.Tittle;
-        const description = data?.data?.attributes?.Hero_Section?.Description;
-
-        if (tittle) {
-          setTittle(tittle);
-        }
-        if (description) {
-          setDescription(description);
-        }
+        setHeroData(data.data.attributes);
       } catch (error) {
-        console.error("Error fetching video data:", error);
+        console.error("Error fetching hero data:", error);
       }
-    };
-
-    fetchData();
+    }
+    fetchHeroData();
   }, []);
 
   return (
-    <>
-      <div
-        ref={parentRef}
-        className="relative flex flex-col items-center justify-center overflow-hidden bg-white px-4 pt-10 dark:bg-black md:min-h-screen md:px-8 "
-      >
-        <div className="hidden sm:block">
-          <BackgroundGrids />
-          <CollisionMechanism
-            beamOptions={{
-              initialX: -400,
-              translateX: 600,
-              duration: 7,
-              repeatDelay: 3,
-            }}
-            containerRef={containerRef}
-            parentRef={parentRef}
-          />
-          <CollisionMechanism
-            beamOptions={{
-              initialX: -200,
-              translateX: 800,
-              duration: 4,
-              repeatDelay: 3,
-            }}
-            containerRef={containerRef}
-            parentRef={parentRef}
-          />
-          <CollisionMechanism
-            beamOptions={{
-              initialX: 200,
-              translateX: 1200,
-              duration: 5,
-              repeatDelay: 3,
-            }}
-            containerRef={containerRef}
-            parentRef={parentRef}
-          />
-          <CollisionMechanism
-            containerRef={containerRef}
-            parentRef={parentRef}
-            beamOptions={{
-              initialX: 400,
-              translateX: 1400,
-              duration: 6,
-              repeatDelay: 3,
-            }}
-          />
-        </div>
-        <h1 className="mt-10 rounded-full border border-black px-4 py-1 text-center text-sm dark:border-yellow-200 md:mt-14">
-          <img
-            src="https://cms.flowautomate.io/uploads/meera_0943e9c2fd.png"
-            alt="Celebration Icon"
-            className="mr-1 inline-block h-6 w-6 p-1"
-          />
-          Introducing Meera
+    <div
+      ref={parentRef}
+      className="relative flex flex-col items-center justify-center overflow-hidden bg-white px-4 pt-10 dark:bg-black md:min-h-screen md:px-8"
+    >
+      <h1 className="mt-10 rounded-full border border-black px-4 py-1 text-center text-sm dark:border-yellow-200 md:mt-14">
+        <img
+          src="https://cms.flowautomate.io/uploads/meera_0943e9c2fd.png"
+          alt="Celebration Icon"
+          className="mr-1 inline-block h-6 w-6 p-1"
+        />
+        Introducing Meera
+      </h1>
+      <div className="py-10 xl:pb-20">
+        <h1 className="text-3xl text-center font-bold sm:text-6xl md:text-7xl xl:px-0 2xl:text-8xl mb-0 md:mb-5">
+          {heroData.Hero_Top_Heading || ""}
         </h1>
-
-        {/* <div className="relative z-20 mx-auto mb-4 mt-4 max-w-5xl text-balance text-center text-3xl font-semibold tracking-tight text-black dark:text-neutral-300 sm:text-4xl md:text-7xl">
-          <Balancer>{tittle}</Balancer>
-        </div> */}
-        {/* <p className="z-20 mx-auto mb-4 max-w-5xl text-center text-xl font-medium text-slate-600 dark:text-gray-200 md:mb-8 md:text-2xl">
-          {description}
-        </p> */}
-
-        <div className="py-10 xl:pb-20">
-          <h1 className="text-3xl text-center font-bold sm:text-6xl md:text-7xl xl:px-0 2xl:text-8xl mb-0 md:mb-5 ">
-            Experince
-          </h1>
-          <SparklesText
-            text="The Magic of Meera"
-            className="px-4 text-center text-3xl font-normal tracking-tight text-black dark:text-neutral-300 sm:text-6xl md:text-7xl xl:px-0 2xl:text-8xl"
-          />
-        </div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, delay: 0.9, ease: "easeOut" }}
-          ref={containerRef}
-        >
-          <HeroVideoDialogDemo />
-        </motion.div>
-
-        {/* <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.2, delay: 0.7 }}
-          className="hidden w-full flex-col items-center justify-center gap-4 px-8 sm:flex sm:flex-row md:mb-20"
-        >
-          <Button
-            data-cal-namespace={calOptions.namespace}
-            data-cal-link={CONSTANTS.CALCOM_LINK}
-            data-cal-config={`{"layout":"${calOptions.layout}"}`}
-            as="button"
-            variant="primary"
-            className="hidden items-center px-14 py-3 text-center text-base dark:bg-white dark:text-black md:flex"
-          >
-            <svg
-              fill="currentColor"
-              viewBox="0 0 16 16"
-              height="1.5em"
-              width="1.5em"
-              className="mr-3"
-            >
-              <path d="M14.5 3a.5.5 0 01.5.5v9a.5.5 0 01-.5.5h-13a.5.5 0 01-.5-.5v-9a.5.5 0 01.5-.5h13zm-13-1A1.5 1.5 0 000 3.5v9A1.5 1.5 0 001.5 14h13a1.5 1.5 0 001.5-1.5v-9A1.5 1.5 0 0014.5 2h-13z" />
-              <path d="M5 8a.5.5 0 01.5-.5h7a.5.5 0 010 1h-7A.5.5 0 015 8zm0-2.5a.5.5 0 01.5-.5h7a.5.5 0 010 1h-7a.5.5 0 01-.5-.5zm0 5a.5.5 0 01.5-.5h7a.5.5 0 010 1h-7a.5.5 0 01-.5-.5zm-1-5a.5.5 0 11-1 0 .5.5 0 011 0zM4 8a.5.5 0 11-1 0 .5.5 0 011 0zm0 2.5a.5.5 0 11-1 0 .5.5 0 011 0z" />
-            </svg>
-            Book a Consultation
-          </Button>
-          <div className="hidden md:block">
-            <LinkPreview>
-              <RainbowButton
-                href="/explore-meera"
-                className="px-14 py-3 font-bold"
-              >
-                {" "}
-                Interact with Meera{" "}
-              </RainbowButton>
-            </LinkPreview>
-          </div>
-        </motion.div>
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.2, delay: 0.7 }}
-          className="mb-10 mt-8 flex w-full flex-col items-center justify-center gap-4 px-8 md:hidden"
-        >
-          <Button
-            data-cal-namespace={calOptions.namespace}
-            data-cal-link={CONSTANTS.CALCOM_LINK}
-            data-cal-config={`{"layout":"${calOptions.layout}"}`}
-            as="button"
-            variant="primary"
-            className="px-14 py-3 text-base dark:bg-white dark:text-black"
-          >
-            Book a Consultation
-          </Button>
-          <LinkPreview>
-            <RainbowButton
-              href="/explore-meera"
-              className="px-14 py-6 font-bold dark:bg-white dark:text-black"
-            >
-              Interact with Meera
-            </RainbowButton>
-          </LinkPreview>
-        </motion.div> */}
+        <SparklesText
+          text={heroData.Hero_Secound_Heading || ""}
+          className="px-4 text-center text-3xl font-normal tracking-tight text-black dark:text-neutral-300 sm:text-6xl md:text-7xl xl:px-0 2xl:text-8xl"
+        />
       </div>
-    </>
+
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4, delay: 0.9, ease: "easeOut" }}
+        ref={containerRef}
+      >
+        <HeroVideoDialogDemo />
+      </motion.div>
+    </div>
   );
 }
 

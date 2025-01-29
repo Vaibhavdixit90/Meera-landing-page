@@ -4,8 +4,8 @@ import { useEffect, useState } from "react";
 import { RainbowButton } from "@/components/ui/rainbow-button";
 
 interface PricingData {
-  Section_Title: string;
-  Section_Description: string;
+  Section_4_Heading: string;
+  Section_4_Description: string;
   Button_href: string;
   Steps: {
     id: number;
@@ -28,7 +28,7 @@ export default function Pricing() {
     async function fetchPricingData() {
       try {
         const res = await fetch(
-          "https://cms.flowautomate.io/api/pricing?populate[Steps][populate]=Points",
+          "https://cms.flowautomate.io/api/meera-landing-page?populate[Steps][populate]=Points",
           { cache: "no-store" }
         );
 
@@ -59,7 +59,7 @@ export default function Pricing() {
   return (
     <div className="mx-auto max-w-7xl py-20 px-4 md:px-8">
       <h2 className=" w-full md:max-w-[80%] text-center md:text-left text-3xl font-semibold leading-snug tracking-tight  sm:text-4xl md:text-5xl lg:text-[4rem] lg:leading-[5rem] ">
-        {pricingData?.Section_Title}
+        {pricingData?.Section_4_Heading}
       </h2>
 
       <div className="mt-5 grid grid-cols-1 gap-12 md:mt-12 md:grid-cols-2 md:gap-8">
@@ -94,7 +94,7 @@ export default function Pricing() {
 
       <div className="my-12 w-full items-center md:max-w-[80%]">
         <p className=" text-center md:text-left">
-          {pricingData?.Section_Description}
+          {pricingData?.Section_4_Description}
         </p>
       </div>
 

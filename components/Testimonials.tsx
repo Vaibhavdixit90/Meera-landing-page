@@ -88,13 +88,13 @@ export function Testimonials() {
   useEffect(() => {
     const fetchTestimonials = async () => {
       const response = await fetch(
-        "https://cms.flowautomate.io/api/homepage?populate[Testimonials][populate]=*"
+        "https://cms.flowautomate.io/api/meera-landing-page?populate[Sections_6][populate]=*"
       );
       const data = await response.json();
 
       // Mapping the fetched data to match TestimonialCardProps
       const mappedTestimonials: TestimonialCardProps[] =
-        data.data.attributes.Testimonials.map((item: Testimonial) => ({
+        data.data.attributes.Sections_6.map((item: Testimonial) => ({
           name: item.Name, // Map to name
           role: item.Role, // Map to role
           img: `https://cms.flowautomate.io${item.image.data.attributes.url}`, // Add base URL

@@ -28,9 +28,9 @@ const Testimonial: React.FC = () => {
     const fetchTestimonialData = async () => {
       try {
         const response = await axios.get(
-          "https://cms.flowautomate.io/api/homepage?populate=Sections_8.Section_Image,Sections_8.Company_Logo",
+          "https://cms.flowautomate.io/api/meera-landing-page?populate=Sections_5.Section_Image"
         );
-        setTestimonialData(response.data.data.attributes.Sections_8);
+        setTestimonialData(response.data.data.attributes.Sections_5);
       } catch (error) {
         console.error("Error fetching testimonial data:", error);
       }
@@ -51,7 +51,6 @@ const Testimonial: React.FC = () => {
               testimonialData.Section_Image.data.attributes.alternativeText ||
               "Testimonial Image"
             }
-            layout="responsive"
             width={500}
             height={300}
             loading="lazy"

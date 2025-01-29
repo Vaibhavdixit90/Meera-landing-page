@@ -9,13 +9,12 @@ export function HeroVideoDialogDemo() {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          "https://cms.flowautomate.io/api/homepage?populate[Hero_Section]=*",
+          "https://cms.flowautomate.io/api/meera-landing-page"
         );
         const data = await response.json();
 
-        const videoSrc = data?.data?.attributes?.Hero_Section?.Hero_Video_Link;
-        const videoPreviewSrc =
-          data?.data?.attributes?.Hero_Section?.Video_Preview_Link;
+        const videoSrc = data?.data?.attributes?.Hero_Video_Link;
+        const videoPreviewSrc = data?.data?.attributes?.Hero_Video_Preview_Link;
 
         if (videoSrc) {
           setVideoSrc(videoSrc);

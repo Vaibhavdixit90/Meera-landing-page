@@ -3,64 +3,22 @@ import { Hero } from "@/components/hero";
 import Testimonial from "@/components/TestimonialSingle";
 import { FooterCta } from "@/components/FooterCta";
 import { Testimonials } from "@/components/Testimonials";
-import { MeeraFeaturesPoints } from "@/components/MeeraFeaturesPoints";
 import { InView } from "@/components/in-view";
-import { TextRevealDemo } from "@/components/textrevil";
 import DemoStoreCard from "@/components/DemoStoreCard";
-import { useEffect, useState } from "react";
-import { MeeraFeature } from "./MeeraFeature";
 import Cta from "./Cta";
 import FaqPage from "./FaqPage";
 import StepsCard from "./StepsCard";
 import BentoGrid from "./BentoGrid";
-import NewHero from "./NewHero";
 import Pricing from "./Pricing";
 
-// Define the interface for the CTA data
-interface CTAData {
-  id: number;
-  Tag_Line: string;
-  Button_title: string;
-  Button_href: string;
-  Icon: string;
-}
-
 export default function HomePage() {
-  const [ctaData, setCtaData] = useState<CTAData | null>(null);
-  const [ctaData2, setCtaData2] = useState<CTAData | null>(null);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        //  SimpleCTAWithImages (first CTA)
-        const response3 = await fetch(
-          "https://cms.flowautomate.io/api/homepage?populate[CTA_1]=*"
-        );
-        const data3 = await response3.json();
-        setCtaData(data3?.data?.attributes?.CTA_1);
-
-        //  SimpleCTAWithImages (second CTA)
-        const response4 = await fetch(
-          "https://cms.flowautomate.io/api/homepage?populate[CTA_2]=*"
-        );
-        const data4 = await response4.json();
-        setCtaData2(data4?.data?.attributes?.CTA_2);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-
-    fetchData();
-  }, []);
-
   return (
     <main>
-      {/* <NewHero /> */}
-  <Hero />
+      <Hero />
       {/* <TextRevealDemo /> */}
       {/* <MeeraFeature /> */}
       <Cta />
-    
+
       <InView
         variants={{
           hidden: {
@@ -80,8 +38,6 @@ export default function HomePage() {
         <StepsCard />
       </InView>
       <DemoStoreCard />
-
-      {/* <MeeraFeaturesPoints /> */}
 
       <InView
         variants={{

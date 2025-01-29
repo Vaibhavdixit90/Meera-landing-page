@@ -1,8 +1,5 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { Button } from "./button";
-import Link from "next/link";
-import { LinkPreview } from "./ui/link-preview";
 import { RainbowButton } from "./ui/rainbow-button";
 
 // Define the type based on the API structure
@@ -31,10 +28,10 @@ export function FooterCta() {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          `${baseUrl}/api/homepage?populate=Sections_10.Section_Video`
+          `${baseUrl}/api/meera-landing-page?populate=Section_8.Section_Video`
         );
         const data = await response.json();
-        setSectionData(data?.data?.attributes?.Sections_10);
+        setSectionData(data?.data?.attributes?.Section_8);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
