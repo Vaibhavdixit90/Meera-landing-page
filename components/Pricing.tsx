@@ -66,7 +66,7 @@ export default function Pricing() {
         {pricingData?.Steps.map((step, index) => (
           <div
             key={step.id}
-            className="relative flex min-h-[400px] flex-col rounded-lg border border-gray-300 p-10"
+            className="relative flex min-h-[400px] flex-col rounded-lg border border-gray-300 dark:border-transparent dark:bg-[#1d1d1d] p-10"
           >
             <span
               className="absolute left-1.5 top-1 -ml-px hidden h-full w-px bg-gray-700 lg:left-24 lg:top-14 lg:block lg:h-px lg:w-[50%]"
