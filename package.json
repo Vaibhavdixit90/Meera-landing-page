@@ -17,6 +17,7 @@
     "@radix-ui/react-switch": "^1.1.0",
     "@tabler/icons-react": "^3.20.0",
     "@types/canvas-confetti": "^1.6.4",
+    "@vercel/analytics": "^1.4.1",
     "axios": "^1.7.7",
     "canvas-confetti": "^1.9.3",
     "cheerio": "^1.0.0",

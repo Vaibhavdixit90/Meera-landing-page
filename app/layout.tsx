@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import { Footer } from "@/components/footer";
 import { ThemeProvider } from "@/context/providers";
 import { usePathname } from "next/navigation";
+import { Analytics } from "@vercel/analytics/react";
 
 export default function RootLayout({
   children,
@@ -46,6 +47,7 @@ export default function RootLayout({
           {/* {!shouldHideLayout && <Navbar />} */}
           {children}
           {!shouldHideLayout && <Footer />}
+          <Analytics /> {/* Add Analytics component here */}
         </ThemeProvider>
       </body>
     </html>
